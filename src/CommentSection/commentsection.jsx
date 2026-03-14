@@ -116,7 +116,13 @@ const Commentsection = ({ movie, loading }) => {
               HiddenReplies.includes(comment._id) ? setHiddenReplies(prev => prev.filter(id => id !== comment._id)) : setHiddenReplies(prev => [...prev, comment._id])
 
             }}
-          > <span className="-translate-y-1">{HiddenReplies.includes(comment._id) ? "+" : "-"}</span></button></div>}
+          > <motion.span
+              animate={{ rotate: HiddenReplies.includes(comment._id) ? 0 : 90 }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              style={{ display: "inline-flex", originX: "50%", originY: "50%" }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+            </motion.span></button></div>}
         </motion.div>
 
         {/* reply component */}

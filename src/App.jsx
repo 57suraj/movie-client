@@ -14,7 +14,6 @@ import Navbar from "./components/navbar";
 
 import Movies from "./movies";
 import Moviepage from "./moviePage";
-
 import Selectedcomment from "./selectedcomment";
 import Signup from "./auth/signup";
 import Users from "./auth/allusers";
@@ -73,7 +72,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="mt-10">
       <Router>
         <Navbar />
 
