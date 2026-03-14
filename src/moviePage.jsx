@@ -103,7 +103,7 @@ const Moviepage = () => {
               transition={{ duration: 0.5 }}
             >
 
-              {movie ? movie?.Title : <div className="animate-pulse h-7 w-65 rounded bg-gray-400"></div>}
+              {movie ? movie?.Title : <div className="animate-pulse h-12 w-64 rounded-xl bg-[#2a364d]"></div>}
             </motion.h1>
 
             <motion.h4
@@ -112,7 +112,7 @@ const Moviepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2, delay: 0.2, ease: "easeOut" }}
             >
-              {movie ? movie.Year : <div className="animate-pulse h-3 w-10 rounded bg-gray-400"></div>}
+              {movie ? movie.Year : <div className="animate-pulse h-6 w-20 rounded-md bg-[#2a364d]"></div>}
             </motion.h4>
           </div>
 
@@ -124,24 +124,24 @@ const Moviepage = () => {
                 <> <b className="text-white"> Director: </b>
                   {movie?.Director} </> :
 
-                <div className="animate-pulse h-5 w-50 rounded bg-gray-700"></div>}
+                <div className="animate-pulse h-5 w-48 rounded-md bg-[#2a364d]"></div>}
             </div>
 
             <div className="normaltext">
               {movie ? <><b className="text-white">Cast: </b>
                 {movie?.Actors}</>
 
-                : <div className="animate-pulse h-5 w-70 rounded bg-gray-700"></div>
+                : <div className="animate-pulse h-5 w-72 rounded-md bg-[#2a364d]"></div>
               }
 
             </div>
 
-            <div className="font-bold normaltext text-gray-400">
+            <div className="font-bold normaltext text-gray-400 w-[90%] md:w-full">
 
               {movie ? <><b className="text-white">Description: </b>
                 {movie?.Plot}</>
 
-                : <div className="animate-pulse h-10 w-120 rounded bg-gray-700"></div>
+                : <div className="animate-pulse h-24 w-full rounded-lg bg-[#2a364d]"></div>
               }
 
             </div>
@@ -152,7 +152,11 @@ const Moviepage = () => {
 
         <div className="  min-w-[170px]">
           <div className=" ">
-            <img className={`h-[200px] w-[133px] ${!movie ? "animate-pulse bg-gray-800 " : ""} rounded-md shadow-black shadow-xl md:h-[250px] md:w-[166.4px] `} src={movie?.Poster} alt={movie?.Title} />
+            {movie ? (
+              <img className="h-[200px] w-[133px] rounded-md shadow-black shadow-xl md:h-[250px] md:w-[166.4px]" src={movie?.Poster} alt={movie?.Title} />
+            ) : (
+              <div className="h-[200px] w-[133px] md:h-[250px] md:w-[166.4px] animate-pulse bg-[#2a364d] rounded-md shadow-black shadow-xl border border-[#3e4a61]"></div>
+            )}
           </div>
         </div>
 
