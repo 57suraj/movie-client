@@ -148,15 +148,22 @@ const Reply = ({ movie, comment }) => {
           pointerEvents: cc === comment._id && isReplying ? "auto" : "none",
         }}
         onSubmit={handleSubmit}>
-        <textarea className="flex flex-col align-middle overflow-hidden resize-none h-[40px] w-full focus:outline-none border-1 rounded-3xl  pl-3 pt-1.5 pb-0.5  border-[#413e56] focus:border-white"
+        <textarea
+          className="flex flex-col align-middle overflow-hidden resize-none h-[40px] w-full focus:outline-none border-1 rounded-3xl py-2 px-4 leading-normal border-[#413e56] bg-[#1a2436] focus:bg-[#25324a] focus:border-white transition-colors duration-200"
           style={{ marginTop: "20px" }}
-          placeholder={"Reply to " + "@" + (comment.userid && comment.userid.username)}
+          placeholder={"Reply to @" + (comment.userid && comment.userid.username)}
           type="text"
           id="text"
           name="text"
           required
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              if (text.trim()) handleSubmit(e);
+            }
+          }}
         ></textarea>
 
         <input type="hidden" name="parentid" value={parentid}></input>

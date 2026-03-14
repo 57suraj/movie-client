@@ -62,14 +62,21 @@ const Newcomment = ({ movie }) => {
     <>
       <form className="flex flex-col space-y-2 " onSubmit={handleSubmit}>
 
-        <textarea className=" overflow-hidden resize-none h-[50px] w-full focus:outline-none border-1 rounded-3xl p-3  border-[#413e56] focus:border-white"
+        <textarea
+          className="overflow-hidden resize-none h-[50px] w-full focus:outline-none border-1 rounded-3xl py-3 px-4 leading-normal border-[#413e56] bg-[#1a2436] focus:bg-[#25324a] focus:border-white transition-colors duration-200"
           type="text"
-          placeholder="Add a comment"
+          placeholder="Add a comment..."
           id="text"
           name="text"
           required
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              if (text.trim()) handleSubmit(e);
+            }
+          }}
         ></textarea>
 
         <input type="hidden" name="parentid" value={parentid}></input>
